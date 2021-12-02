@@ -12,7 +12,7 @@
 
 ## <div align="center">Présentation</div>
 
-<img align="right" src="https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" height="300" width="250"/>
+<img align="right" src="https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" height="200" width="200"/>
 Znetwork est donc un bot sur le réseau social Discord, ce réseau social est divisé en communautés gérées par les utilisateurs qui en créent, dans ces communautés nommées "serveurs Discord" différent canaux de discussions nommés "salons" permettent aux membres de discuter de façon organisé sur des thème définis ou non (dessins, mangas, cusine, ...). 
 C'est là que Znetwork intervient: l'utilisateur peut configurer un salon qui est relier avec plusieurs autres salons de serveurs différents pour former un seul et même canal de discussion.
 
