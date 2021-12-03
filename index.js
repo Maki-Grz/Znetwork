@@ -5,7 +5,7 @@ module.exports = {
   client,
 };
 
-console.log("|<          Sushi         >|");
+console.log("|<          Znetwork         >|");
 
 //!----------Client Core Release--------
 const config = require('./config/config.json');
