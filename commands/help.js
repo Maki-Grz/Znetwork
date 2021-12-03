@@ -44,7 +44,7 @@ module.exports = {
                 .addField("📑 `Description`", "Affiche les commandes de la catégorie Description")
                 .addField("💛 `Remerciements`", "Affiche les commandes de la catégorie Remerciements")
                 .setImage("https://i.imgur.com/XxooEsH.gif")
-                .setThumbnail("https://img1.picmix.com/output/pic/normal/5/6/3/0/9940365_7f90d.gif")
+                .setThumbnail("https://static.vecteezy.com/ti/vecteur-libre/p1/602787-modeles-de-conception-creative-lettre-z-logo-concept-vectoriel.jpg")
         
               const menu = await message.channel.send({ embeds: [embedHelp], components: [row] });
 
