@@ -4,7 +4,7 @@ module.exports = {
     run: async (message, args, client) => {
 
         const { MessageEmbed, MessageActionRow, MessageButton } = require('discord.js');
-        const { embedCommandes } = require('../modules/menu')
+        const { embedCommandes, embedDescription, embedRemerciements } = require('../modules/menu')
 
         if (args[0]) {
             const command = client.commands.get(args[0].toLowerCase())
@@ -28,18 +28,17 @@ module.exports = {
                             .setStyle("SECONDARY"),
                         new MessageButton()
                             .setCustomId('description')
-                            .setLabel('👑 Description')
+                            .setLabel('📑 Description')
                             .setStyle("SECONDARY"),
                         new MessageButton()
                             .setCustomId('remerciements')
-                            .setLabel('Remerciements')
-                            .setEmoji('893769798243221524')
+                            .setLabel('💛 Remerciements')
                             .setStyle("SECONDARY"),
                         );
 
             let embedHelp = new MessageEmbed()
-                .setAuthor(`Interface des commandes de ${client.user.username} - Menu`, `${client.user.displayAvatarURL()}`)
-                .setDescription(`**${client.user.username}** est un bot de discussion basé sur des "canaux" qui sont relier entres les serveurs ce qui permet aux membres de discuter ensemble sans être dans la même communauté. \n \n Veuillez choisir la commande, comme ceci : **.help <commandes>** pour avoir ses informations.\n`)
+                .setAuthor(`Interface de ${client.user.username} - Menu`, `${client.user.displayAvatarURL()}`)
+                .setDescription(`**${client.user.username}** est un bot de discussion basé sur des "canaux" qui sont relier entres les serveurs ce qui permet aux membres de discuter ensemble sans être dans la même communauté. \n \n Veuillez choisir la commande, comme ceci : **z!help <commande>** pour avoir ses informations.\n`)
                 .addField("📡 `Commandes`", "Affiche les commandes de la catégorie Commandes")
                 .addField("📑 `Description`", "Affiche les commandes de la catégorie Description")
                 .addField("💛 `Remerciements`", "Affiche les commandes de la catégorie Remerciements")
@@ -88,6 +87,7 @@ module.exports = {
         if(message.deletable) message.delete()
     },
     name: 'help',
+    class: 'member',
     help: {
         description: 'Cette commande permet de voir la liste des commandes de Znetwork',
         syntax: '[nom de la commande]'
