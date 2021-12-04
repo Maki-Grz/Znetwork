@@ -18,7 +18,7 @@ module.exports.embedCommandes = new MessageEmbed()
 
 module.exports.embedDescription = new MessageEmbed()
 .setAuthor(`Interface de ${client.user.username} - Description`, `${client.user.avatarURL()}`)
-.setDescription(``)
+.setDescription(`Znetwork à l'utilisateur de configurer un salon qui est relier avec plusieurs autres salons de serveurs différents pour former un seul et même canal de discussion.`)
 .setImage("https://i.imgur.com/XxooEsH.gif")
 .setThumbnail("https://static.vecteezy.com/ti/vecteur-libre/p1/602787-modeles-de-conception-creative-lettre-z-logo-concept-vectoriel.jpg")
 

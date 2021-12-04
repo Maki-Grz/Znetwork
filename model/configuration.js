@@ -1,9 +1,9 @@
 const mongoose = require("mongoose");
 
 const configurationSchema = mongoose.Schema({
-    _id: mongoose.Schema.Types.ObjectId,
-    server: String,
-    owner: String,
+    canal: String,
+    server: Number,
+    member: Number,
     salon: String,
     date: Date
 })
