@@ -4,7 +4,11 @@ module.exports = {
     run: async (message, args, client) => {
 
         const { MessageEmbed, MessageActionRow, MessageButton } = require('discord.js');
-        const { embedCommandes, embedDescription, embedRemerciements } = require('../modules/menu')
+        const { embedCommandes, embedDescription, embedRemerciements } = require('../modules/menu');
+        const { logger } = require('../server/logger');
+
+        logger.info(`${message.author.id} use help`)
+
 
         if (args[0]) {
             const command = client.commands.get(args[0].toLowerCase())

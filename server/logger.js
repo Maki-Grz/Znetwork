@@ -13,7 +13,7 @@ const logger = winston.createLogger({
                 winston.format.colorize(),
                 winston.format.timestamp({ format: 'MMM-DD-YYYY HH:mm:ss' }),
                 winston.format.align(),
-                winston.format.printf(info => `${info.level}: [${[info.timestamp]}]: ${info.message}`),
+                winston.format.printf(info => `${info.level}: ${info.timestamp}: ${info.message}`),
             ),
             handleExceptions: true,
             handleRejections: true,
@@ -31,9 +31,3 @@ const logger = winston.createLogger({
 });
 
 module.exports.logger = logger
-
-if (process.env.NODE_ENV !== 'production') {
-    logger.add(new winston.transports.Console({
-        format: winston.format.simple(),
-    }));
-}
