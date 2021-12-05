@@ -3,6 +3,8 @@ module.exports = {
 
         const { configuration } = require("../model/index");
         const mongoose = require('mongoose');
+        const { MessageEmbed, MessageSelectMenu } = require('discord.js');
+        const logger = require('../server/logger');
 
         const dataConfig = await configuration.findOne({ server: message.guild.id });
 
@@ -23,7 +25,6 @@ module.exports = {
             setTimeout(() => { if (m.deletable) m.delete(); if (message.deletable) message.delete() }, 10000);
         });
 
-        const { MessageEmbed, MessageSelectMenu } = require('discord.js');
 
         const embed001 = new MessageEmbed()
             .setTitle("Canal de discussions - Configuration")
@@ -36,6 +37,7 @@ module.exports = {
             .addOptions({ label: "Développement - FR", value: "dev-fr", description: "Synchronisation avec le canal de Développement français", emoji: "<:dev:820966666635706440>" })
             .addOptions({ label: "Anime - FR", value: "anime-fr", description: "Synchronisation avec le canal d'Anime français", emoji: "<:LewdMegumin:764487238632341534>" })
             .addOptions({ label: "Musique - FR", value: "musique-fr", description: "Synchronisation avec le canal de Musique français", emoji: "<:applemusic:916704282701598751>" })
+            .addOptions({ label: "Dessin - FR", value: "dessin-fr", description: "Synchronisation avec le canal de Dessin français", emoji: "✏️" })
 
         await message.channel.send({ embeds: [embed001], components: [{ type: 1, components: [select.toJSON()] }] }).then(message => {
             setTimeout(() => { if (message.deletable) message.delete() }, 30000)
@@ -61,6 +63,7 @@ module.exports = {
 
             if (choiceConfigUser) return message.channel.send({ embeds: [recap] }).then(() => {
                 dataPush()
+                logger.log(`New canal ${choiceConfigUser} in the server ${message.guild.id}`)
             })
         }
         await client.ws.on('INTERACTION_CREATE', choice);

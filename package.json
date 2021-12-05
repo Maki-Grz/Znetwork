@@ -18,6 +18,7 @@
   "homepage": "https://github.com/Maki-Grz/Znetwork#readme",
   "dependencies": {
     "discord.js": "^13.3.1",
-    "mongoose": "^6.0.14"
+    "mongoose": "^6.0.14",
+    "winston": "^3.3.3"
   }
 }
