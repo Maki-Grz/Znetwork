@@ -4,7 +4,7 @@ module.exports = {
         const { configuration } = require("../model/index");
         const mongoose = require('mongoose');
         const { MessageEmbed, MessageSelectMenu } = require('discord.js');
-        const logger = require('../server/logger');
+        const { logger } = require('../server/logger');
 
         const dataConfig = await configuration.findOne({ server: message.guild.id });
 
@@ -55,6 +55,14 @@ module.exports = {
 
             if (interaction) choiceConfigUser = interaction.data.values[0]
 
+            if (interaction) message.channel.send("Préparation du récapitulatif...").then(m => {
+                setTimeout(() => { if(m.deletable) m.delete() }, 10000);
+            })
+        }
+        await client.ws.on('INTERACTION_CREATE', choice);
+        setTimeout(() => {
+            client.ws.off('INTERACTION_CREATE', choice);
+
             let recap = new MessageEmbed()
                 .setAuthor(`Récapitulatif de la configuration`)
                 .setDescription(`Canal de discussions synchronisé avec **${choiceConfigUser}**`)
@@ -63,11 +71,9 @@ module.exports = {
 
             if (choiceConfigUser) return message.channel.send({ embeds: [recap] }).then(() => {
                 dataPush()
-                logger.log(`New canal ${choiceConfigUser} in the server ${message.guild.id}`)
+                logger.info(`New canal connected to ${choiceConfigUser} in the server ${message.guild.id}`)
             })
-        }
-        await client.ws.on('INTERACTION_CREATE', choice);
-        setTimeout(() => { client.ws.off('INTERACTION_CREATE', choice); }, 30000); //30 secondes en ms
+        }, 30000); //30 secondes en ms
 
         function dataPush() {
 

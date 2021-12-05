@@ -2,8 +2,8 @@ const mongoose = require("mongoose");
 
 const configurationSchema = mongoose.Schema({
     canal: String,
-    server: Number,
-    member: Number,
+    server: String,
+    member: String,
     salon: String,
     date: Date
 })

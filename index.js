@@ -39,3 +39,7 @@ client.on('messageCreate', async message => {
     return;
   }
 })
+
+//!----------Server---------
+client.server = require("./server/dev-fr-1");
+client.server.init();
