@@ -80,7 +80,7 @@ module.exports = {
             const newCanal = {
                 canal: choiceConfigUser,
                 server: message.guild.id,
-                member: message.author,
+                member: message.author.id,
                 salon: args1After,
                 date: new Date()
             }

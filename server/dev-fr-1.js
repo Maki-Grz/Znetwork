@@ -1,5 +1,6 @@
 const { configuration } = require("../model/index");
-const { client } = require('../index')
+const { client } = require('../index');
+const config = require('../config/config.json');
 
 module.exports = {
 
@@ -14,22 +15,18 @@ async function server() {
 
     client.on('messageCreate', async message => {
         try {
-            console.log("ok 1")
-
             if (message.type !== 'DEFAULT' || message.author.bot) return;
+            if (message.content.startsWith(config.prefix)) return;
             //if (`${message.channel.id}` !== .......) return;
 
-
-            console.log("ok 2")
-
             let msg = message.content
-            let channelBdd = dataConfig
 
-            console.log(channelBdd)
+            console.log(dataConfig)
 
-            let findChannel = client.channels.cache.get(channelBdd)
+            let findChannel = client.channels.cache.get("916345806062243882")
 
-            findChannel.send(msg)
+            findChannel.send(`**${message.author.username}** | ${msg}`)
+            if (message.deletable) message.delete()
 
 
         } catch (error) {
