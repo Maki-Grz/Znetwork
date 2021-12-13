@@ -13,19 +13,31 @@ async function server() {
 
     const dataConfig = await configuration.find({ canal: 'dev-fr' });
 
+    let cooldown = new Set()
+
     client.on('messageCreate', async message => {
         try {
             if (message.type !== 'DEFAULT' || message.author.bot) return;
             if (message.content.startsWith(config.prefix)) return;
-            //if (`${message.channel.id}` !== .......) return;
+            if (!dataConfig.map(e => e._doc.salon).find(element => element === message.channel.id)) return;
+            if (cooldown.has(message.author.id)) {
+                return message.reply()
+            } else {
 
-            let msg = message.content
+                cooldown.add(message.author.id)
+                setTimeout(() => { cooldown.delete(message.author.id) }, 60000)
+            } //60 secondes d'attente
 
-            console.log(dataConfig)
+            let msg = message.content;
 
-            let findChannel = client.channels.cache.get("916345806062243882")
+            let salonArray = dataConfig.filter(e => e._doc.salon !== message.channel.id).map(e => e._doc.salon);
 
-            findChannel.send(`**${message.author.username}** | ${msg}`)
+            salonArray.forEach((item, index) => {
+                let findChannel = client.channels.cache.get(`${item}`);
+                findChannel.send(`**${message.author.tag}** | ${msg}`);
+
+
+            })
             if (message.deletable) message.delete()
 
 
